@@ -1,6 +1,5 @@
 --[[
 Base64.lua
-@Date    : 2016/9/22 上午9:42:42
 @Author  : DengSir (tdaddon@163.com)
 @Link    : https://dengsir.github.io
 ]]
@@ -8,6 +7,8 @@ Base64.lua
 local MAJOR, MINOR = 'LibBase64-1.0', 1
 local Base64 = LibStub:NewLibrary(MAJOR, MINOR)
 if not Base64 then return end
+
+print(1)
 
 local B = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 local TAILS = {'', '==', '='}
@@ -22,7 +23,7 @@ local tonumber = tonumber
 local function tobitstr(b, l)
     r = ''
     for i = l, 1, -1 do
-        r = r .. b % 2 ^ i - b % 2 ^ (i - 1) > 0 and '1' or '0'
+        r = r .. (b % 2 ^ i - b % 2 ^ (i - 1) > 0 and '1' or '0')
     end
     return r
 end
@@ -38,7 +39,7 @@ function Base64:enc(data)
         c = tonumber(x, 2) + 1
         return B:sub(c, c)
     end)
-    return data .. TAILS[#data % 3 + 1])
+    return data .. TAILS[#data % 3 + 1]
 end
 
 function Base64:dec(data)
