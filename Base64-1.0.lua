@@ -8,8 +8,6 @@ local MAJOR, MINOR = 'LibBase64-1.0', 1
 local Base64 = LibStub:NewLibrary(MAJOR, MINOR)
 if not Base64 then return end
 
-print(1)
-
 local B = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 local TAILS = {'', '==', '='}
 
